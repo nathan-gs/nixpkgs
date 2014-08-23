@@ -83,7 +83,7 @@ in {
 
     extraCmdLineOptions = mkOption {
       description = "Extra command line options for the Zookeeper launcher.";
-      default = [ ];
+      default = [ "-Djava.net.preferIPv4Stack=true" "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
       type = types.listOf types.string;
       example = [ "-Djava.net.preferIPv4Stack=true" "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
     };
