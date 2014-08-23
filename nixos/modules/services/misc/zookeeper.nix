@@ -46,8 +46,8 @@ in {
       type = types.str;
       default = ''
         initLimit=5
-		syncLimit=2
-		tickTime=2000
+		    syncLimit=2
+		    tickTime=2000
       '';
     };
 
