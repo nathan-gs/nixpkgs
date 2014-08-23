@@ -100,6 +100,7 @@ in {
         ExecStart = ''
           ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*" \
             ${toString cfg.extraCmdLineOptions} \
+            -Dlog4j.configuration=${configDir}/log4j.properties \
             org.apache.zookeeper.server.quorum.QuorumPeerMain \
             ${configDir}/zoo.cfg
         '';
