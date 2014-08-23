@@ -101,9 +101,11 @@ in {
       serviceConfig = {
         ExecStart = "${pkgs.zookeeper}/bin/zkServer.sh ${toString cfg.extraCmdLineOptions}";
         User = "zookeeper";
+        PermissionStartOnly=true;
       };
       preStart = ''
         mkdir -m 0700 -p ${cfg.dataDir}
+        chown zookeeper ${cfg.dataDir}
         echo "${toString cfg.id}" > ${cfg.dataDir}/myid
       '';
     };

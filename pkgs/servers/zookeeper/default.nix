@@ -10,6 +10,8 @@ stdenv.mkDerivation rec {
 
 	buildInputs = [ makeWrapper jre ];
 
+	phases = ["unpackPhase" "installPhase"];
+
 	installPhase = ''
 		mkdir -p $out
 		cp -R conf docs lib ${name}.jar $out
