@@ -7,7 +7,7 @@ let
   
   zookeeperConfig = ''
     dataDir=${cfg.dataDir}
-    clientPort=${cfg.port}
+    clientPort=${toString cfg.port}
     ${cfg.extraConf}
     ${cfg.servers}
   '';
