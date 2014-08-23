@@ -101,7 +101,7 @@ in {
           ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*:${configDir}" \
             ${toString cfg.extraCmdLineOptions} \
             -Dlog4j.configuration=file:///${configDir}/log4j.properties \
-            -Dzookeeper.root.logger=INFO,CONSOLE
+            -Dzookeeper.root.logger=INFO,CONSOLE \
             org.apache.zookeeper.server.quorum.QuorumPeerMain \
             ${configDir}/zoo.cfg
         '';
