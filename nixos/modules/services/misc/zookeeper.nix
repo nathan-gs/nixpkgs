@@ -85,7 +85,7 @@ in {
       description = "Extra command line options for the Zookeeper launcher.";
       default = [ ];
       type = types.listOf types.string;
-      example = [ "-Djava.net.preferIPv4Stack=true", "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
+      example = [ "-Djava.net.preferIPv4Stack=true" "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
     };
 
 
