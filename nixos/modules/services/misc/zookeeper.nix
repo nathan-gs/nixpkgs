@@ -46,8 +46,8 @@ in {
       type = types.str;
       default = ''
         initLimit=5
-		    syncLimit=2
-		    tickTime=2000
+        syncLimit=2
+        tickTime=2000
       '';
     };
 
@@ -65,10 +65,10 @@ in {
     logging = mkOption {
       description = "Zookeeper logging configuration.";
       default = ''
-	    zookeeper.root.logger=INFO, CONSOLE
-	  	log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
-	  	log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
-	  	log4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n
+      zookeeper.root.logger=INFO, CONSOLE
+      log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+      log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+      log4j.appender.CONSOLE.layout.ConversionPattern=%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n
       '';
       type = types.str;
     };
@@ -100,7 +100,8 @@ in {
         ExecStart = ''
           ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*:${configDir}" \
             ${toString cfg.extraCmdLineOptions} \
-            -Dlog4j.configuration=${configDir}/log4j.properties \
+            -Dlog4j.configuration=file:///${configDir}/log4j.properties \
+            -Dzookeeper.root.logger=INFO,CONSOLE
             org.apache.zookeeper.server.quorum.QuorumPeerMain \
             ${configDir}/zoo.cfg
         '';
