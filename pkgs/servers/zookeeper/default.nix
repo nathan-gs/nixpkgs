@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out
-		cp -R conf dpcs lib ${name}.jar $out
+		cp -R conf docs lib ${name}.jar $out
 		mkdir -p $out/bin
 		cp -R bin/*.sh $out/bin
 		for i in $out/bin/*.sh; do
