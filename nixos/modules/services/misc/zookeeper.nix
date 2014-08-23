@@ -98,7 +98,7 @@ in {
       environment = { ZOOCFGDIR = configDir; };
       serviceConfig = {
         ExecStart = ''
-          ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*" \
+          ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*:${configDir}" \
             ${toString cfg.extraCmdLineOptions} \
             -Dlog4j.configuration=${configDir}/log4j.properties \
             org.apache.zookeeper.server.quorum.QuorumPeerMain \
