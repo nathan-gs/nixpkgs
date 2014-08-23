@@ -99,7 +99,7 @@ in {
       after = [ "network-interfaces.target" ];
       environment = { ZOOCFGDIR = configDir; };
       serviceConfig = {
-        ExecStart = "${pkgs.zookeeper}/bin/zkServer.sh ${toString cfg.extraCmdLineOptions}";
+        ExecStart = "${pkgs.zookeeper}/bin/zkServer.sh start ${toString cfg.extraCmdLineOptions}";
         User = "zookeeper";
         PermissionsStartOnly = true;
       };
