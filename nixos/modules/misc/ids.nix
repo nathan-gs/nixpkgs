@@ -144,7 +144,9 @@
       siproxd = 134;
       mlmmj = 135;
       neo4j = 136;
-      zookeeper = 137;
+      riemann = 137;
+      riemanndash = 138;
+      zookeeper = 139;
 
       # When adding a uid, make sure it doesn't match an existing gid. And don't use uids above 399!
 
@@ -262,6 +264,8 @@
       tss = 133;
       siproxd = 134;
       mlmmj = 135;
+      riemann = 137;
+      riemanndash = 138;
 
       # When adding a gid, make sure it doesn't match an existing uid. And don't use gids above 399!
 
