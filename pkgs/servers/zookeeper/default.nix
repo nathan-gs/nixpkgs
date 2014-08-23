@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 		for i in $out/bin/*.sh; do
 			wrapProgram $i \
 				--set JAVA_HOME "${jre}" \
-				--prefix PATH "${bash}/bin"
+				--prefix PATH : "${bash}/bin"
 		done
 	'';
 
