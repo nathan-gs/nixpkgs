@@ -85,7 +85,7 @@ in {
       description = "Extra command line options for the Zookeeper launcher.";
       default = [ ];
       type = types.listOf types.string;
-      example = [ "-Djava.net.preferIPv4Stack=true" ];
+      example = [ "-Djava.net.preferIPv4Stack=true", "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
     };
 
 
@@ -99,7 +99,12 @@ in {
       after = [ "network-interfaces.target" ];
       environment = { ZOOCFGDIR = configDir; };
       serviceConfig = {
-        ExecStart = "${pkgs.zookeeper}/bin/zkServer.sh start ${toString cfg.extraCmdLineOptions}";
+        ExecStart = ''
+          ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}:${pkgs.zookeeper}/lib" \
+            ${toString cfg.extraCmdLineOptions} \
+            org.apache.zookeeper.server.quorum.QuorumPeerMain \
+            ${configDir}/zoo.cfg
+        '';
         User = "zookeeper";
         PermissionsStartOnly = true;
       };
