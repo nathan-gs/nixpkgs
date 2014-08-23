@@ -88,8 +88,6 @@ in {
       example = [ "-Djava.net.preferIPv4Stack=true" "-Dcom.sun.management.jmxremote" "-Dcom.sun.management.jmxremote.local.only=true" ];
     };
 
-
-
   };
 
   config = mkIf cfg.enable {
@@ -100,7 +98,7 @@ in {
       environment = { ZOOCFGDIR = configDir; };
       serviceConfig = {
         ExecStart = ''
-          ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}:${pkgs.zookeeper}/lib" \
+          ${pkgs.jre}/bin/java -cp "${pkgs.zookeeper}/*:${pkgs.zookeeper}/lib/*" \
             ${toString cfg.extraCmdLineOptions} \
             org.apache.zookeeper.server.quorum.QuorumPeerMain \
             ${configDir}/zoo.cfg
