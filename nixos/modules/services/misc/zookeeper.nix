@@ -104,7 +104,7 @@ in {
       };
       preStart = ''
         mkdir -m 0700 -p ${cfg.dataDir}
-        echo "${cfg.id}" > ${cfg.dataDir}/myid
+        echo "${toString cfg.id}" > ${cfg.dataDir}/myid
       '';
     };
 
